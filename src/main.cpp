@@ -40,9 +40,6 @@ class $modify(PlayerObject) {
             fields->m_isUsingExtendedFrames = false;
         }
 
-        // Hide robot node
-        m_robotBatchNode->setVisible(false);
-
         // give birth to sonic (real)
         std::string frameName = fmt::format("{}_sonicRun_01.png"_spr, chosenGameSprite);
         fields->m_customSprite = CCSprite::createWithSpriteFrameName(frameName.c_str());
@@ -55,6 +52,13 @@ class $modify(PlayerObject) {
         }
 
         return true;
+    }
+
+    void createRobot(int p0) {
+        PlayerObject::createRobot(p0);
+
+        // Hide robot node
+        m_robotBatchNode->setVisible(false);
     }
 
     void update(float p0) {
